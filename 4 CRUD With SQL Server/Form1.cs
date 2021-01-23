@@ -87,6 +87,35 @@ namespace _4_CRUD_With_SQL_Server
             }
         }
 
+        private void updateData()
+        {
+            if (tbKodeBarang.Text.Trim() == "" || tbNama.Text.Trim() == "" || tbHrgBeli.Text.Trim() == "" || tbHrgJual.Text.Trim() == "" || tbJumlah.Text.Trim() == "" || tbSatuan.Text.Trim() == "")
+            {
+                MessageBox.Show("Data Harus Lengkap!");
+            }
+            else
+            {
+                SqlConnection conn = connection.GetConn();
+                try
+                {
+                    conn.Open();
+                    sc = new SqlCommand("UPDATE TBL_BARANG SET NamaBarang = '" + tbNama.Text + "', HargaBeli = '" + tbHrgBeli.Text + "', HargaJual = '" + tbHrgJual.Text + "', JumlahBarang = '" + tbJumlah.Text + "', SatuanBarang = '" + tbSatuan.Text + "' WHERE KodeBarang = '" + tbKodeBarang.Text + "'", conn);
+                    sc.ExecuteNonQuery();
+                    MessageBox.Show("Data Berhasil Diupdate!");
+                    showData();
+                    clear();
+                }
+                catch (Exception E)
+                {
+                    MessageBox.Show(E.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             showData();
@@ -96,6 +125,29 @@ namespace _4_CRUD_With_SQL_Server
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             createData();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                tbKodeBarang.Text = row.Cells["KodeBarang"].Value.ToString();
+                tbNama.Text = row.Cells["NamaBarang"].Value.ToString();
+                tbHrgBeli.Text = row.Cells["HargaBeli"].Value.ToString();
+                tbHrgJual.Text = row.Cells["HargaJual"].Value.ToString();
+                tbJumlah.Text = row.Cells["JumlahBarang"].Value.ToString();
+                tbSatuan.Text = row.Cells["SatuanBarang"].Value.ToString();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.ToString());
+            }            
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            updateData();
         }
     }
 }
