@@ -116,6 +116,17 @@ namespace _4_CRUD_With_SQL_Server
             }
         }
 
+        private void deleteData()
+        {
+            SqlConnection conn = connection.GetConn();
+            conn.Open();
+            sc = new SqlCommand("DELETE TBL_BARANG WHERE KodeBarang = '" + tbKodeBarang.Text + "'", conn);
+            sc.ExecuteNonQuery();
+            MessageBox.Show("Data Berhasil Dihapus!");
+            showData();
+            clear();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             showData();
@@ -148,6 +159,14 @@ namespace _4_CRUD_With_SQL_Server
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             updateData();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Yakin Akan Menghapus Data Barang : " + tbNama.Text + " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deleteData();
+            }
         }
     }
 }
