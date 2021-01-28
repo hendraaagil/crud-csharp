@@ -24,6 +24,32 @@ namespace _4_CRUD_With_SQL_Server
             InitializeComponent();
         }
 
+        private void autoNumbering()
+        {
+            long hitung;
+            string urutan;
+            SqlDataReader sdr;
+            SqlConnection conn = connection.GetConn();
+            conn.Open();
+            sc = new SqlCommand("SELECT KodeBarang FROM TBL_BARANG WHERE KodeBarang IN(SELECT MAX(KodeBarang) FROM TBL_BARANG) ORDER BY KodeBarang DESC", conn);
+            sdr = sc.ExecuteReader();
+            sdr.Read();
+            if (sdr.HasRows)
+            {
+                hitung = Convert.ToInt64(sdr[0].ToString().Substring(sdr["KodeBarang"].ToString().Length - 3, 3)) + 1;
+                string kodeUrutan = "000" + hitung;
+                urutan = "BRG" + kodeUrutan.Substring(kodeUrutan.Length - 3, 3);
+            }
+            else
+            {
+                urutan = "BRG001";
+            }
+
+            sdr.Close();
+            tbKodeBarang.Text = urutan;
+            conn.Close();
+        }
+
         private void showDataComboBox()
         {
             cbSatuan.Items.Add("PCS");
@@ -42,6 +68,7 @@ namespace _4_CRUD_With_SQL_Server
             tbJumlah.Text = "0";
             cbSatuan.Text = "";
             tbCari.Clear();
+            autoNumbering();
         }
 
         private void showData()
