@@ -7,3 +7,4 @@ E:\Documents\Visual Studio 2012\Projects\0 C#\4 CRUD With SQL Server\4 CRUD With
 E:\Documents\Visual Studio 2012\Projects\0 C#\4 CRUD With SQL Server\4 CRUD With SQL Server\obj\Debug\4 CRUD With SQL Server.csproj.GenerateResource.Cache
 E:\Documents\Visual Studio 2012\Projects\0 C#\4 CRUD With SQL Server\4 CRUD With SQL Server\obj\Debug\4 CRUD With SQL Server.exe
 E:\Documents\Visual Studio 2012\Projects\0 C#\4 CRUD With SQL Server\4 CRUD With SQL Server\obj\Debug\4 CRUD With SQL Server.pdb
+E:\Documents\Visual Studio 2012\Projects\0 C#\4 CRUD With SQL Server\4 CRUD With SQL Server\obj\Debug\_4_CRUD_With_SQL_Server.FormTransaksiJual.resources
