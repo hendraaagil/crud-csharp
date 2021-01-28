@@ -32,6 +32,7 @@ namespace _4_CRUD_With_SQL_Server
             tbHrgJual.Text = "0";
             tbJumlah.Text = "0";
             tbSatuan.Clear();
+            tbCari.Clear();
         }
 
         private void showData()
@@ -41,6 +42,30 @@ namespace _4_CRUD_With_SQL_Server
             {
                 conn.Open();
                 sc = new SqlCommand("SELECT * FROM TBL_BARANG", conn);
+                ds = new DataSet();
+                sda = new SqlDataAdapter(sc);
+                sda.Fill(ds, "TBL_BARANG");
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "TBL_BARANG";
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception G)
+            {
+                MessageBox.Show(G.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void searchData()
+        {
+            SqlConnection conn = connection.GetConn();
+            try
+            {
+                conn.Open();
+                sc = new SqlCommand("SELECT * FROM TBL_BARANG WHERE KodeBarang LIKE '%" + tbCari.Text + "%' OR NamaBarang LIKE '%" + tbCari.Text + "%'", conn);
                 ds = new DataSet();
                 sda = new SqlDataAdapter(sc);
                 sda.Fill(ds, "TBL_BARANG");
@@ -167,6 +192,16 @@ namespace _4_CRUD_With_SQL_Server
             {
                 deleteData();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void tbCari_TextChanged(object sender, EventArgs e)
+        {
+            searchData();
         }
     }
 }
