@@ -47,6 +47,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbCari = new System.Windows.Forms.TextBox();
             this.cbSatuan = new System.Windows.Forms.ComboBox();
+            this.btnKeluar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 180);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(665, 195);
+            this.dataGridView1.Size = new System.Drawing.Size(565, 195);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -210,7 +211,7 @@
             this.groupBox1.Controls.Add(this.tbCari);
             this.groupBox1.Location = new System.Drawing.Point(370, 81);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 46);
+            this.groupBox1.Size = new System.Drawing.Size(216, 46);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pencarian Kode / Nama Barang";
@@ -219,7 +220,7 @@
             // 
             this.tbCari.Location = new System.Drawing.Point(6, 19);
             this.tbCari.Name = "tbCari";
-            this.tbCari.Size = new System.Drawing.Size(304, 20);
+            this.tbCari.Size = new System.Drawing.Size(204, 20);
             this.tbCari.TabIndex = 7;
             this.tbCari.TextChanged += new System.EventHandler(this.tbCari_TextChanged);
             // 
@@ -231,12 +232,24 @@
             this.cbSatuan.Size = new System.Drawing.Size(129, 21);
             this.cbSatuan.TabIndex = 6;
             // 
+            // btnKeluar
+            // 
+            this.btnKeluar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKeluar.Location = new System.Drawing.Point(494, 135);
+            this.btnKeluar.Name = "btnKeluar";
+            this.btnKeluar.Size = new System.Drawing.Size(92, 32);
+            this.btnKeluar.TabIndex = 11;
+            this.btnKeluar.Text = "Keluar";
+            this.btnKeluar.UseVisualStyleBackColor = true;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 397);
+            this.ClientSize = new System.Drawing.Size(606, 397);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnKeluar);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnUpdate);
@@ -287,6 +300,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbCari;
         private System.Windows.Forms.ComboBox cbSatuan;
+        private System.Windows.Forms.Button btnKeluar;
     }
 }
 

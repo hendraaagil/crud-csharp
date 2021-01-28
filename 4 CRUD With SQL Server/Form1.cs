@@ -240,5 +240,10 @@ namespace _4_CRUD_With_SQL_Server
         {
             searchData();
         }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
