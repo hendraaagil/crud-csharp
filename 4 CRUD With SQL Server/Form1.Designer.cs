@@ -30,7 +30,6 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSimpan = new System.Windows.Forms.Button();
-            this.tbSatuan = new System.Windows.Forms.TextBox();
             this.tbJumlah = new System.Windows.Forms.TextBox();
             this.tbHrgJual = new System.Windows.Forms.TextBox();
             this.tbHrgBeli = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbCari = new System.Windows.Forms.TextBox();
+            this.cbSatuan = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(21, 180);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(665, 195);
-            this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // btnSimpan
@@ -66,18 +66,10 @@
             this.btnSimpan.Location = new System.Drawing.Point(102, 135);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(92, 32);
-            this.btnSimpan.TabIndex = 7;
+            this.btnSimpan.TabIndex = 8;
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.UseVisualStyleBackColor = true;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
-            // 
-            // tbSatuan
-            // 
-            this.tbSatuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSatuan.Location = new System.Drawing.Point(235, 100);
-            this.tbSatuan.Name = "tbSatuan";
-            this.tbSatuan.Size = new System.Drawing.Size(129, 20);
-            this.tbSatuan.TabIndex = 6;
             // 
             // tbJumlah
             // 
@@ -185,7 +177,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(200, 135);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(92, 32);
-            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -196,7 +188,7 @@
             this.btnHapus.Location = new System.Drawing.Point(298, 135);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(92, 32);
-            this.btnHapus.TabIndex = 9;
+            this.btnHapus.TabIndex = 10;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
@@ -207,7 +199,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(396, 135);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(92, 32);
-            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -218,7 +210,7 @@
             this.groupBox1.Location = new System.Drawing.Point(370, 81);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(316, 46);
-            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pencarian Kode / Nama Barang";
             // 
@@ -227,8 +219,16 @@
             this.tbCari.Location = new System.Drawing.Point(6, 19);
             this.tbCari.Name = "tbCari";
             this.tbCari.Size = new System.Drawing.Size(304, 20);
-            this.tbCari.TabIndex = 0;
+            this.tbCari.TabIndex = 7;
             this.tbCari.TextChanged += new System.EventHandler(this.tbCari_TextChanged);
+            // 
+            // cbSatuan
+            // 
+            this.cbSatuan.FormattingEnabled = true;
+            this.cbSatuan.Location = new System.Drawing.Point(235, 100);
+            this.cbSatuan.Name = "cbSatuan";
+            this.cbSatuan.Size = new System.Drawing.Size(129, 21);
+            this.cbSatuan.TabIndex = 6;
             // 
             // Form1
             // 
@@ -240,7 +240,6 @@
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSimpan);
-            this.Controls.Add(this.tbSatuan);
             this.Controls.Add(this.tbJumlah);
             this.Controls.Add(this.tbHrgJual);
             this.Controls.Add(this.tbHrgBeli);
@@ -253,6 +252,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cbSatuan);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CRUD With SQL Server";
@@ -269,7 +269,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSimpan;
-        private System.Windows.Forms.TextBox tbSatuan;
         private System.Windows.Forms.TextBox tbJumlah;
         private System.Windows.Forms.TextBox tbHrgJual;
         private System.Windows.Forms.TextBox tbHrgBeli;
@@ -286,6 +285,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbCari;
+        private System.Windows.Forms.ComboBox cbSatuan;
     }
 }
 

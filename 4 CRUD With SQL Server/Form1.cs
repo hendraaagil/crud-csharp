@@ -24,6 +24,15 @@ namespace _4_CRUD_With_SQL_Server
             InitializeComponent();
         }
 
+        private void showDataComboBox()
+        {
+            cbSatuan.Items.Add("PCS");
+            cbSatuan.Items.Add("BOX");
+            cbSatuan.Items.Add("LUSIN");
+            cbSatuan.Items.Add("BOTOL");
+            cbSatuan.Items.Add("SACHET");
+        }
+
         private void clear()
         {
             tbKodeBarang.Clear();
@@ -31,7 +40,7 @@ namespace _4_CRUD_With_SQL_Server
             tbHrgBeli.Text = "0";
             tbHrgJual.Text = "0";
             tbJumlah.Text = "0";
-            tbSatuan.Clear();
+            cbSatuan.Text = "";
             tbCari.Clear();
         }
 
@@ -85,7 +94,7 @@ namespace _4_CRUD_With_SQL_Server
 
         private void createData()
         {
-            if (tbKodeBarang.Text.Trim() == "" || tbNama.Text.Trim() == "" || tbHrgBeli.Text.Trim() == "" || tbHrgJual.Text.Trim() == "" || tbJumlah.Text.Trim() == "" || tbSatuan.Text.Trim() == "")
+            if (tbKodeBarang.Text.Trim() == "" || tbNama.Text.Trim() == "" || tbHrgBeli.Text.Trim() == "" || tbHrgJual.Text.Trim() == "" || tbJumlah.Text.Trim() == "" || cbSatuan.Text.Trim() == "")
             {
                 MessageBox.Show("Data Harus Lengkap!");
             }
@@ -95,7 +104,7 @@ namespace _4_CRUD_With_SQL_Server
                 try
                 {
                     conn.Open();
-                    sc = new SqlCommand("INSERT INTO TBL_BARANG VALUES('" + tbKodeBarang.Text + "', '" + tbNama.Text + "', '" + tbHrgBeli.Text + "', '" + tbHrgJual.Text + "', '" + tbJumlah.Text + "', '" + tbSatuan.Text + "')", conn);
+                    sc = new SqlCommand("INSERT INTO TBL_BARANG VALUES('" + tbKodeBarang.Text + "', '" + tbNama.Text + "', '" + tbHrgBeli.Text + "', '" + tbHrgJual.Text + "', '" + tbJumlah.Text + "', '" + cbSatuan.Text + "')", conn);
                     sc.ExecuteNonQuery();
                     MessageBox.Show("Data Berhasil Ditambahkan!");
                     showData();
@@ -114,7 +123,7 @@ namespace _4_CRUD_With_SQL_Server
 
         private void updateData()
         {
-            if (tbKodeBarang.Text.Trim() == "" || tbNama.Text.Trim() == "" || tbHrgBeli.Text.Trim() == "" || tbHrgJual.Text.Trim() == "" || tbJumlah.Text.Trim() == "" || tbSatuan.Text.Trim() == "")
+            if (tbKodeBarang.Text.Trim() == "" || tbNama.Text.Trim() == "" || tbHrgBeli.Text.Trim() == "" || tbHrgJual.Text.Trim() == "" || tbJumlah.Text.Trim() == "" || cbSatuan.Text.Trim() == "")
             {
                 MessageBox.Show("Data Harus Lengkap!");
             }
@@ -124,7 +133,7 @@ namespace _4_CRUD_With_SQL_Server
                 try
                 {
                     conn.Open();
-                    sc = new SqlCommand("UPDATE TBL_BARANG SET NamaBarang = '" + tbNama.Text + "', HargaBeli = '" + tbHrgBeli.Text + "', HargaJual = '" + tbHrgJual.Text + "', JumlahBarang = '" + tbJumlah.Text + "', SatuanBarang = '" + tbSatuan.Text + "' WHERE KodeBarang = '" + tbKodeBarang.Text + "'", conn);
+                    sc = new SqlCommand("UPDATE TBL_BARANG SET NamaBarang = '" + tbNama.Text + "', HargaBeli = '" + tbHrgBeli.Text + "', HargaJual = '" + tbHrgJual.Text + "', JumlahBarang = '" + tbJumlah.Text + "', SatuanBarang = '" + cbSatuan.Text + "' WHERE KodeBarang = '" + tbKodeBarang.Text + "'", conn);
                     sc.ExecuteNonQuery();
                     MessageBox.Show("Data Berhasil Diupdate!");
                     showData();
@@ -154,6 +163,7 @@ namespace _4_CRUD_With_SQL_Server
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            showDataComboBox();
             showData();
             clear();
         }
@@ -173,7 +183,7 @@ namespace _4_CRUD_With_SQL_Server
                 tbHrgBeli.Text = row.Cells["HargaBeli"].Value.ToString();
                 tbHrgJual.Text = row.Cells["HargaJual"].Value.ToString();
                 tbJumlah.Text = row.Cells["JumlahBarang"].Value.ToString();
-                tbSatuan.Text = row.Cells["SatuanBarang"].Value.ToString();
+                cbSatuan.Text = row.Cells["SatuanBarang"].Value.ToString();
             }
             catch (Exception E)
             {
